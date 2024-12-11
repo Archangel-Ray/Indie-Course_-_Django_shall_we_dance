@@ -1,0 +1,24 @@
+ul {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    list-style-type: none;
+    background-color: #f1f1f1;
+    width: 90%;
+    max-width: 60rem;
+    border-radius: 20px;
+    margin: 2rem auto;
+    padding: 1px;
+}
+
+ul li {
+    text-align: center;
+    width: 100%;
+    font-size: 3rem;
+    padding: 2rem 1rem;
+}
+
+ul a:hover, ul a:active {
+  color: #eca8b5;
+}
+

@@ -1,0 +1,30 @@
+{% extends 'movie_app/base.html'%}
+
+
+{% block title %}Все фильмы{% endblock %}
+
+{% block content %}
+    <h2>Список всех фильмов</h2>
+    {%for movie in movies%}
+        <h4><a href="{{movie.get_url}}">{{movie.name}}</a></h4>
+        <ul>
+            <li>год - {{movie.year|default:"Неизвестен"}}</li>
+            <li>рейтинг - {{movie.rating}}</li>
+            <li>бюджет - {{movie.budget}}</li>
+            <li><a href="directors/">режисёр</a> - <a href="directors/{{movie.director.id}}">{{movie.director}}</a></li>
+            <li><a href="actors/">актёры</a>:
+                {%for actor in movie.actors.all%}
+                    <a href="actors/{{actor.id}}">{{actor}}</a>,
+                {%endfor%}
+
+            </li>
+        </ul>
+    {%endfor%}
+    <hr>
+    <p>Сумма бюджетов - {{ag.budget__sum}}</p>
+    <p>Средний бюджет - {{ag.budget__avg}}</p>
+    <p>Минимальный рейтинг - {{ag.rating__min}}</p>
+    <p>Максимальный рейтинг - {{ag.rating__max}}</p>
+    <p>Всего фильмов - {{ag.id__count}} <u>вычислял метод aggregate</u></p>
+    <p>Всего фильмов - {{total}} <u>вычислял метод QuerySet.count</u></p>
+{% endblock %}

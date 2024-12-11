@@ -1,0 +1,23 @@
+<!--проект/приложение/templates/имя_приложения/-->
+{%extends 'base.html'%}
+{%block title%}Гороскоп {{title}}{%endblock%}
+{%load static%}
+{%load my_filters%}
+
+{% block css_additional %}
+<link rel="stylesheet" href="{%static 'horoscope/css/info.css'%}">
+{% endblock %}
+
+{%block content%}
+    {%include 'includes/navbar.html'%}
+    {% if description_sign is not None %}
+        <h2>{{title}}</h2>
+        <!--строка сформированная во views:-->
+        <!--<h3>{{description_sign}}</h3>-->
+        <!--набрано  в html из полученных аргументов через контекст:-->
+        <h3>{{sign_data}} (с {{start_date}} {{start_month}} по {{ending_date}} {{ending_month}}).</h3>
+        <!--<h2>{{my_dict.Воздух.0}}</h2>-->
+    {% else %}
+        <h1>Неизвестный знак зодиака {{title}}</h1>
+    {% endif %}
+{%endblock%}

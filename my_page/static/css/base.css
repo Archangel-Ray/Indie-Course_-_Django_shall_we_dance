@@ -1,0 +1,44 @@
+html{
+    background-color: #eaedad;
+}
+
+h1 {
+    color: #b800c2;
+    text-align: center;
+    font-family: "Andale Mono", AndaleMono, monospace;
+    font-size: 60px;
+    text-decoration: underline;
+}
+
+h2 {
+    color: #140e45;
+    text-align: center;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 100px;
+}
+
+nav {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+nav a {
+    color: white;
+    display: block;
+    font-size: 2rem;
+    margin: 20px;
+}
+
+nav a:hover, ul a:active {
+  color: #eca8b5;
+}

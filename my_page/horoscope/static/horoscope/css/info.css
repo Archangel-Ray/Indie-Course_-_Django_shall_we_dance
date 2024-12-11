@@ -1,0 +1,15 @@
+h2 {
+    color: #140e45;
+    text-align: center;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 100px;
+}
+
+h3 {
+    color: #6f00ff;
+    margin-left: 15rem;
+    min-width: 400px;
+    text-align: center;
+    font-family: "Andale Mono", AndaleMono, monospace;
+    font-size: 30px;
+}

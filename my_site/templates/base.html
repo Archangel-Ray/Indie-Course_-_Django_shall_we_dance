@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%block style%}{%endblock%}
+</head>
+<body>
+
+{%include 'includes/header.html'%}
+
+<div class="row">
+    {% block content %}
+    {% endblock %}
+
+    {%include 'includes/right_column.html'%}
+
+</div>
+
+{%include 'includes/footer.html'%}
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+
+{%block title%}Список всех книг{%endblock%}
+
+{%block context%}
+    <h2>Список всех книг</h2>
+    <ul>
+        {%for book in books%}
+            <li><a href="{%url 'specific book' id_book=book.id%}">{{book.title}}</a></li>
+        {%endfor%}
+    </ul>
+{%endblock%}

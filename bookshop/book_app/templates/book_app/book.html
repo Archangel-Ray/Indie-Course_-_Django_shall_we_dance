@@ -1,0 +1,9 @@
+{%extends 'base.html'%}
+{%block title%}{{book.title}}{%endblock%}
+{%block context%}
+<h1>{{book.title}}</h1>
+<ul>
+    <li>автор: {{book.author}}</li>
+    <li>рейтин: {{book.rating}}</li>
+</ul>
+{%endblock%}

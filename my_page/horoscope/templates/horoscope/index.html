@@ -1,0 +1,23 @@
+<!--templates/horoscope/index.html-->
+{%extends 'base.html'%}
+{%load static%}
+
+{% block css_additional %}
+<link rel="stylesheet" href="{%static 'horoscope/css/index.css'%}">
+{% endblock %}
+
+{%block title%}
+Меню
+{%endblock%}
+
+{%block content%}
+    <!--{%include 'includes/navbar.html'%}-->
+    <h2><a href="{%url 'стихии зодика'%}">стихии</a></h2>
+    <ul>
+        {% for sign in signs_zodiac%}
+            <li><a href="{% url 'знак зодиака' sign=sign%}">{{sign|title}}</a></li>
+        {%empty%}
+            ничего нет
+        {%endfor%}
+    </ul>
+{%endblock%}

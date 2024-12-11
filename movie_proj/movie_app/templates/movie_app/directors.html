@@ -1,0 +1,14 @@
+{% extends 'movie_app/base.html'%}
+
+
+{% block title %}Список всех режисёров{% endblock %}
+
+
+{% block content %}
+    <h1>Список всех режисёров</h1>
+    {%for director in directors%}
+        <ul>
+            <li><a href="/directors/{{director.id}}">{{director}}</a></li>
+        </ul>
+    {%endfor%}
+{% endblock %}
