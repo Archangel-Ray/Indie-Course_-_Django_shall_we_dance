@@ -14,7 +14,8 @@ week = {
 
 
 def main(request):
-    return HttpResponse("нужно перейти на страницу дня недели. для этого ввести его название в адресе")
+    return HttpResponse("нужно перейти на страницу дня недели. "
+                        "для этого ввести в адресе название или номер дня недели")
 
 
 def what_day_of_the_week(request, day_of_the_week):
