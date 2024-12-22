@@ -12,7 +12,7 @@ class TestHoroscope(TestCase):
         self.assertIn("Весы - седьмой знак зодиака, планета Венера (с 24 сентября по 23 октября)",
                       response.content.decode())
 
-    def test_libra_redirect(self):
+    def test_redirect(self):
         zodiac_list = ['', 'aries', 'taurus', 'gemini', 'cancer', 'leo', 'virgo', 'libra',
                        'scorpio', 'sagittarius', 'capricorn', 'aquarius', 'pisces']
         for i in range(1, 13):
