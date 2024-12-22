@@ -37,9 +37,9 @@ class TestHoroscope(TestCase):
         }
         for i in range(len(zodiac_dict)):
             key = list(zodiac_dict)[i]
-            response = self.client.get(f'/horoscope/{key}/')
-            self.assertEqual(response.status_code, 200)
-            self.assertIn(zodiac_dict[key], response.content.decode())
-            response_redirect = self.client.get(f'/horoscope/{i + 1}/')
-            self.assertEqual(response_redirect.status_code, 302)
-            self.assertEqual(response_redirect.url, f"/horoscope/{key}/")
+            response = self.client.get(f'/horoscope/{key}/')  # запрос по названию знака Зодиака
+            self.assertEqual(response.status_code, 200)  # проверка статуса
+            self.assertIn(zodiac_dict[key], response.content.decode())  # сравнение значения из словаря с контекстом
+            response_redirect = self.client.get(f'/horoscope/{i + 1}/')  # запрос по номеру знака
+            self.assertEqual(response_redirect.status_code, 302)  # проверка статуса перенаправления
+            self.assertEqual(response_redirect.url, f"/horoscope/{key}/")  # соответствие роута
