@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse
 
 week = {
@@ -14,8 +14,7 @@ week = {
 
 
 def main(request):
-    return HttpResponse("нужно перейти на страницу дня недели. "
-                        "для этого ввести в адресе название или номер дня недели")
+    return render(request, "week_days/greeting.html")
 
 
 def what_day_of_the_week(request, day_of_the_week):

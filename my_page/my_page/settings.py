@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'horoscope',
     'geometry',
     'actors',
+    'week_days',
 ]
 
 MIDDLEWARE = [
