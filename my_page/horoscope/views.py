@@ -35,7 +35,7 @@ def index(request, element=None):
         signs_zodiac = list(sign_dict)
     context = {
         'signs_zodiac': signs_zodiac,
-        # 'стихии': reverse('стихии зодика'),
+        # 'стихии': reverse('стихии зодиака'),
     }
     return render(request, 'horoscope/index.html', context=context)
 
@@ -44,7 +44,7 @@ def index(request, element=None):
     #     link = reverse("знак зодиака", args=[sing])
     #     menu += f"<h2><li><a href='{link}'>{sing.title()}</li></h2>"
     # menu = f"<ol>{menu}</ol>"
-    # menu += f"<ul><a href={reverse('стихии зодика')}>Cтихии зодика</a></ul>"
+    # menu += f"<ul><a href={reverse('стихии зодиака')}>Cтихии зодиака</a></ul>"
     # return HttpResponse(menu)
 
 

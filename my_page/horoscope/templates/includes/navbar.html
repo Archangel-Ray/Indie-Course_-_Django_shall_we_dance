@@ -5,5 +5,5 @@
     {% for sign, value in signs_zodiac.items%}
         <a href="{% url 'знак зодиака' sign=sign%}">{{value|first|split|first}}</a>
     {%endfor%}
-    <a href="{%url 'стихии зодика'%}">стихии</a>
+    <a href="{%url 'стихии зодиака'%}">стихии</a>
 </nav>

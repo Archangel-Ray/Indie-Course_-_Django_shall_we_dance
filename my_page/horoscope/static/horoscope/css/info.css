@@ -1,5 +1,15 @@
+h1 {
+    color: #b800c2;
+    margin-left: 15rem;
+    text-align: center;
+    font-family: "Andale Mono", AndaleMono, monospace;
+    font-size: 60px;
+    text-decoration: underline;
+}
+
 h2 {
     color: #140e45;
+    margin-left: 15rem;
     text-align: center;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     font-size: 100px;
