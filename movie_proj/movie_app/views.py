@@ -14,7 +14,7 @@ def show_all_movies(request):
         f_field=F('year') + 100,
     ).annotate(math=F('budget') * F('rating'), )
     aggregate_movies = movies.aggregate(Sum('budget'), Avg('budget'), Max('rating'), Min('rating'), Count('id'))
-    # for movie in movies:
+    # for movie in movies: # перебор делался для заполнения поля слаг там где оно не заполнено
     #     movie.save()
     return render(request, 'movie_app/all_movies.html', {
         'movies': movies,

@@ -93,20 +93,20 @@ class Movie(models.Model):
     #         self.slug = self.converter(slugify(self.name, allow_unicode=True))
     #     super().save(*args, **kwargs)
 
-    # конвертер латиницы в кирилицу
-    # @staticmethod
-    # def converter(text):
-    #     cyrillic_to_latin = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh',
-    #                          'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p',
-    #                          'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'ch',
-    #                          'ш': 'sh', 'щ': 'sh', 'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya'}
-    #     new_text = ""
-    #     for x in text:
-    #         if x in cyrillic_to_latin:
-    #             new_text += cyrillic_to_latin[x]
-    #         else:
-    #             new_text += x
-    #     return new_text
+    # конвертер латиницы в кириллицу
+    @staticmethod
+    def converter(text):
+        cyrillic_to_latin = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh',
+                             'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p',
+                             'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'ch',
+                             'ш': 'sh', 'щ': 'sh', 'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya'}
+        new_text = ""
+        for x in text:
+            if x in cyrillic_to_latin:
+                new_text += cyrillic_to_latin[x]
+            else:
+                new_text += x
+        return new_text
 
     # реконструкция url-адреса отдельного элемента модели
     def get_url(self):
