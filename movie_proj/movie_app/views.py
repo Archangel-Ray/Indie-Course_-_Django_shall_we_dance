@@ -23,7 +23,7 @@ def show_all_movies(request):
     })
 
 
-def book_display(request, slug_movie: str):
+def displaying_movie(request, slug_movie: str):
     movie = get_object_or_404(Movie, slug=slug_movie)
     return render(request, 'movie_app/movie.html', {
         'movie': movie
