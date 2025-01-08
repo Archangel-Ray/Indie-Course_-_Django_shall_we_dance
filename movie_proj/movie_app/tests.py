@@ -87,6 +87,13 @@ class MovieModelTestCase(TestCase):
         self.assertEqual(Movie.objects.get(id=1).rating, 82)
         self.print_info('запись была успешно изменена')
 
+    def test_the_slug_field_in_cyrillic(self):
+        # Проверка слаг-поля если название будет заполнено на кириллице
+        self.print_info('начало проверки слаг-поля на кириллице')
+        self.cyrillic = Movie.objects.create(name='Название Фильма', rating=1)  # добавление записи
+        self.assertEqual(self.cyrillic.slug, 'nazvanie-filma')
+        self.print_info('слаг-поле на кириллице успешно конвертировано')
+
 
 # запуск тестов в терминале
 # python manage.py test
