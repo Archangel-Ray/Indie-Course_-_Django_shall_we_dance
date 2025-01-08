@@ -2,6 +2,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.urls import reverse
+from django.utils.text import slugify
 
 
 class Director(models.Model):
@@ -88,10 +89,10 @@ class Movie(models.Model):
     actors = models.ManyToManyField(Actor, related_name='movies')
 
     # сохранение с конвертацией автоматического поля url-адреса
-    # def save(self, *args, **kwargs):
-    #     if not self.slug:
-    #         self.slug = self.converter(slugify(self.name, allow_unicode=True))
-    #     super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = self.converter(slugify(self.name, allow_unicode=True))
+        super().save(*args, **kwargs)
 
     # конвертер латиницы в кириллицу
     @staticmethod

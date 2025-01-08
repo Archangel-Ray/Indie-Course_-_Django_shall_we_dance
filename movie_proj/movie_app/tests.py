@@ -8,7 +8,7 @@ class MovieModelTestCase(TestCase):
 
     @staticmethod
     def print_info(message):
-        # служебный метод для вывода сообщения и подсчёта колличества записей на данный момент
+        # служебный метод для вывода сообщения и подсчёта количества записей на данный момент
         count = Movie.objects.count()
         print(f"{message}: #all_movies={count}")
 
@@ -86,3 +86,7 @@ class MovieModelTestCase(TestCase):
         self.movie.save()
         self.assertEqual(Movie.objects.get(id=1).rating, 82)
         self.print_info('запись была успешно изменена')
+
+
+# запуск тестов в терминале
+# python manage.py test
