@@ -42,7 +42,7 @@ class MovieAdmin(admin.ModelAdmin):
     list_display = ['name', 'director', 'rating', 'genres', 'budget', 'rating_status']  # отображаемые поля
     list_editable = ['rating', 'genres', 'director']  # редактируемые поля
     ordering = ['-rating', 'name']  # сортировка
-    list_per_page = 10  # колличество строк на странице
+    list_per_page = 10  # количество строк на странице
     actions = ['set_genre_action', 'set_genre_western', 'set_genre_comedy']  # строка "действий"
     search_fields = ['name__startswith', 'rating']  # строка поиска со списком полей в которых идёт поиск
     list_filter = [RatingFilter, 'genres']  # панель фильтрации
