@@ -88,9 +88,10 @@ class Movie(models.Model):
     # связь с другой таблицей многие ко многим
     actors = models.ManyToManyField(Actor, related_name='movies')
 
+    # заполнение слаг-поля происходит в админ-панели
     # сохранение с конвертацией автоматического поля url-адреса
     def save(self, *args, **kwargs):
-        if not self.slug:
+        if not self.slug:  # если объект создаётся не в админ-панели, то поле останется пустым
             self.slug = self.converter(slugify(self.name, allow_unicode=True))
         super().save(*args, **kwargs)
 

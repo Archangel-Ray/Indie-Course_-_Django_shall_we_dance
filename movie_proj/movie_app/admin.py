@@ -46,11 +46,13 @@ class MovieAdmin(admin.ModelAdmin):
     actions = ['set_genre_action', 'set_genre_western', 'set_genre_comedy']  # строка "действий"
     search_fields = ['name__startswith', 'rating']  # строка поиска со списком полей в которых идёт поиск
     list_filter = [RatingFilter, 'genres']  # панель фильтрации
+
+    # отображение конкретной записи
     # fields = ['name', 'rating', 'genres', 'budget']  # поля отображаемые на странице элементов
     # exclude = ['genres']  # поля исключаемые из отображения на странице элементов
     readonly_fields = ['budget']  # поля только для чтения на странице элементов
     prepopulated_fields = {'slug': ('name',)}  # автоматическое заполнение поля URL-имени элемента
-    # filter_horizontal = ['actors']  # горизонтальное отображение окон таблиц многие ко многим на странице элементов
+    # filter_horizontal = ['actors'] # горизонтальное отображение окон таблиц многие ко многим на странице элементов
     filter_vertical = ['actors']  # вертикальное отображение окон таблиц многие ко многим на странице элементов
 
     # декоратор для указания поля по которому сортировать и отображаемое название
