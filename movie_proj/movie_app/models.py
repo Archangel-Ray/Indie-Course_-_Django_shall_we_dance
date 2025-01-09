@@ -16,7 +16,7 @@ class Director(models.Model):
 
     # реконструкция url-адреса отдельного элемента модели
     def get_url(self):
-        return reverse('режисёр', args=[self.id])
+        return reverse('режиссёр', args=[self.id])
 
 
 class DressingRoom(models.Model):
@@ -45,7 +45,7 @@ class Actor(models.Model):
         if self.gender == self.MALE:
             return f"Актёр {self.first_name} {self.last_name}"
         else:
-            return f"Актрисса {self.first_name} {self.last_name}"
+            return f"Актриса {self.first_name} {self.last_name}"
 
 
 class Movie(models.Model):

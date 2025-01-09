@@ -1,11 +1,11 @@
 {% extends 'movie_app/base.html'%}
 
 
-{% block title %}Список всех режисёров{% endblock %}
+{% block title %}Список всех режиссёров{% endblock %}
 
 
 {% block content %}
-    <h1>Список всех режисёров</h1>
+    <h1>Список всех режиссёров</h1>
     {%for director in directors%}
         <ul>
             <li><a href="/directors/{{director.id}}">{{director}}</a></li>
