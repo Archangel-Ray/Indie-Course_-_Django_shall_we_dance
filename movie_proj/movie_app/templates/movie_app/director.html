@@ -13,7 +13,7 @@
     <h3>Список фильмов:</h3>
     <ul>
         {%for movie in director.movies.all%}
-            <li>{{movie}}</li>
+            <li><a href="{{movie.get_url}}">{{movie}}</a></li>
         {%endfor%}
     </ul>
 {% endblock %}

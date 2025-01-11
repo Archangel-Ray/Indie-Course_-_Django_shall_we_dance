@@ -11,10 +11,10 @@
             <li>год - {{movie.year|default:"Неизвестен"}}</li>
             <li>рейтинг - {{movie.rating}}</li>
             <li>бюджет - {{movie.budget}}</li>
-            <li><a href="directors/">режиссёр</a> - <a href="directors/{{movie.director.id}}">{{movie.director}}</a></li>
+            <li><a href="directors/">режиссёр</a> - <a href="{{movie.director.get_url}}">{{movie.director}}</a></li>
             <li><a href="actors/">актёры</a>:
                 {%for actor in movie.actors.all%}
-                    <a href="actors/{{actor.id}}">{{actor}}</a>,
+                    <a href="{{actor.get_url}}">{{actor}}</a>,
                 {%endfor%}
 
             </li>

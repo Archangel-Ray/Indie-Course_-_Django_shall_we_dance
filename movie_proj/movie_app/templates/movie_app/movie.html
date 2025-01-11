@@ -8,12 +8,12 @@
     <h3>Рейтинг - {{movie.rating}}</h3>
     <h3>Бюджет - {{movie.budget}}</h3>
     <h3>Год выхода - {{movie.year}}</h3>
-    <h3>Режиссёр - <a href="/directors/{{movie.director.id}}">{{movie.director}}</a></h3>
+    <h3><a href="/directors/">Режиссёр</a> - <a href="{{movie.director.get_url}}">{{movie.director}}</a></h3>
     <hr>
     <h3><a href="/actors/">Актёры:</a></h3>
     <ul>
         {%for actor in movie.actors.all%}
-            <li><a href="/actors/{{actor.id}}">{{actor}}</a></li>
+            <li><a href="{{actor.get_url}}">{{actor}}</a></li>
         {%endfor%}
     </ul>
 {% endblock %}
