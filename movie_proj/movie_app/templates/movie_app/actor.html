@@ -5,6 +5,11 @@
 
 
 {% block content %}
+    <p>
+        <a href="/">Все фильмы</a> |
+        <a href="{% url 'все режиссёры' %}">Все режиссёры</a> |
+        <a href="{% url 'актёры' %}">Все актёры</a>
+    </p>
     <h2>Актёр</h2>
     <h3>Имя - {{actor.first_name}}</h3>
     <h3>Фамилия - {{actor.last_name}}</h3>
