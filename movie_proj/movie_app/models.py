@@ -20,11 +20,14 @@ class Director(models.Model):
 
 
 class DressingRoom(models.Model):
+    """
+    таблица для демонстрации связи один-к-одному
+    """
     floor = models.IntegerField()
     number = models.IntegerField()
 
     def __str__(self):
-        return f'{self.floor} {self.number}'
+        return f'эаж: {self.floor}; комната: {self.number}'
 
 
 class Actor(models.Model):
@@ -37,8 +40,10 @@ class Actor(models.Model):
 
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    dressing = models.OneToOneField(DressingRoom, on_delete=models.SET_NULL, null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDERS, default=MALE)
+
+    # связь с другой таблицей один-к-одному
+    dressing = models.OneToOneField(DressingRoom, on_delete=models.SET_NULL, null=True, blank=True)
 
     # отображение элемента
     def __str__(self):
