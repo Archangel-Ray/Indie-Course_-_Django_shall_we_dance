@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 def index(request):
     print(request.GET)
-    return render(request, 'feedback/feedback.html')
+    return render(request, 'feedback/feedback.html')  # шаблон с формой
