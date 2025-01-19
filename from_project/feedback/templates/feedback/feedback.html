@@ -6,27 +6,9 @@
 </head>
 <body>
     <h2>Оставьте отзыв</h2>  <!-- создание шаблона -->
-        <form action="" method="post">  <!--отправка в корень сайта через post запрос-->
+    <form method="post">  <!--отправка в корень сайта через post запрос-->
         {% csrf_token %}  <!--проверка актуальности текущей сессии-->
-        {% if got_error %}  <!--проверка на заполнение поля-->
-            <p>поле не заполнено</p>
-        {% endif %}
-        <label for="name_id">Имя:</label>
-        <input type="text" id="name_id" name="name">
-        <br><br>
-        <label for="surname_id">Фамилия:</label>
-        <input type="text" id="surname_id" name="surname">
-        <br><br>
-        <label for="feedback_id">отзыв:</label><br>
-        <textarea name="feedback" id="feedback_id" cols="30" rows="5"></textarea>
-        <br><br>
-        <input type="radio" id="first" name="my_choice" value="выбор">
-        <label for="first">выбор</label><br>
-        <input type="radio" id="second" name="my_choice" value="одного">
-        <label for="second">одного</label><br>
-        <input type="radio" id="third" name="my_choice" value="из значений">
-        <label for="third">из значений</label>
-        <br><br>
+        {{ about_the_window }} <!--принимаем экземпляр формы из представления-->
         <button type="submit">отправить</button>
     </form>
 </body>

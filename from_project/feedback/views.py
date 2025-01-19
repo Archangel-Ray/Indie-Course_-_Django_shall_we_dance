@@ -1,18 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
+from .forms import FeedbackForm
+
 
 def index(request):
     if request.method == 'POST':
-        name = request.POST['name']
-        if not name:
-            # форма с выводом сообщения об ошибке
-            return render(request, 'feedback/feedback.html', context={'got_error': True})
-        print(name)
-        # перенаправление на сообщение о подтверждении
-        return HttpResponseRedirect('/done')
-    # шаблон с формой. сообщение об ошибке не выводить
-    return render(request, 'feedback/feedback.html', context={'got_error': False})
+        # создание формы и наполнение её полученными данными
+        filled_window = FeedbackForm(request.POST)
+        # проверка данных формы
+        if filled_window.is_valid():
+            print(filled_window.cleaned_data)
+            # перенаправление на сообщение о подтверждении
+            return HttpResponseRedirect('/done')
+    # создание формы
+    window = FeedbackForm()
+    return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
 
 def done(request):
