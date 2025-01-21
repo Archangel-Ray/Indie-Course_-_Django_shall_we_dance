@@ -7,14 +7,15 @@ from .forms import FeedbackForm
 def index(request):
     if request.method == 'POST':
         # создание формы и наполнение её полученными данными
-        filled_window = FeedbackForm(request.POST)
+        window = FeedbackForm(request.POST)
         # проверка данных формы
-        if filled_window.is_valid():
-            print(filled_window.cleaned_data)
+        if window.is_valid():
+            print(window.cleaned_data)
             # перенаправление на сообщение о подтверждении
             return HttpResponseRedirect('/done')
-    # создание формы
-    window = FeedbackForm()
+    else:
+        # создание формы
+        window = FeedbackForm()
     return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
 
