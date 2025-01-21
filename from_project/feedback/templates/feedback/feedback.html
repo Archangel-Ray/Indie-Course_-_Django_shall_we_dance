@@ -8,9 +8,11 @@
     <h2>Оставьте отзыв</h2>  <!-- создание шаблона -->
     <form method="post">  <!--отправка в корень сайта через post запрос-->
         {% csrf_token %}  <!--проверка актуальности текущей сессии-->
-        {{ about_the_window.name.label_tag }} <!--отображение подписи-->
-        {{ about_the_window.name.errors }} <!--отображение строки если ошибка-->
-        {{ about_the_window.name }} <!--отображение самого поля-->
+        <div>
+            {{ about_the_window.name.label_tag }} <!--отображение подписи-->
+            {{ about_the_window.name.errors }} <!--отображение строки если ошибка-->
+            {{ about_the_window.name }} <!--отображение самого поля-->
+        </div>
         <button type="submit">отправить</button>
     </form>
 </body>
