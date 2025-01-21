@@ -8,26 +8,15 @@
     <h2>Оставьте отзыв</h2>  <!-- создание шаблона -->
     <form method="post">  <!--отправка в корень сайта через post запрос-->
         {% csrf_token %}  <!--проверка актуальности текущей сессии-->
-        <div>
-            {{ about_the_window.name.label_tag }} <!--отображение подписи-->
-            {{ about_the_window.name.errors }} <!--отображение строки если ошибка-->
-            {{ about_the_window.name }} <!--отображение самого поля-->
-        </div>
-        <div>
-            {{ about_the_window.surname.label_tag }} <!--отображение подписи-->
-            {{ about_the_window.surname.errors }} <!--отображение строки если ошибка-->
-            {{ about_the_window.surname }} <!--отображение самого поля-->
-        </div>
-        <div>
-            {{ about_the_window.feedback.label_tag }} <!--отображение подписи-->
-            {{ about_the_window.feedback.errors }} <!--отображение строки если ошибка-->
-            {{ about_the_window.feedback }} <!--отображение самого поля-->
-        </div>
-        <div>
-            {{ about_the_window.rating.label_tag }} <!--отображение подписи-->
-            {{ about_the_window.rating.errors }} <!--отображение строки если ошибка-->
-            {{ about_the_window.rating }} <!--отображение самого поля-->
-        </div>
+
+        {% for field in about_the_window %}
+            <div>
+                {{ field.label_tag }} <!--отображение подписи-->
+                {{ field.errors }} <!--отображение строки если ошибка-->
+                {{ field }} <!--отображение самого поля-->
+            </div>
+        {% endfor %}
+
         <button type="submit">отправить</button>
     </form>
 </body>
