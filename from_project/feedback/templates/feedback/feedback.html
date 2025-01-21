@@ -14,7 +14,7 @@
         {% csrf_token %}  <!--проверка актуальности текущей сессии-->
 
         {% for field in about_the_window %}
-            <div class="form-style">
+            <div class="form-style {% if field.errors %} errors {% endif %}">
                 {{ field.label_tag }} <!--отображение подписи-->
                 {{ field.errors }} <!--отображение строки если ошибка-->
                 {{ field }} <!--отображение самого поля-->
