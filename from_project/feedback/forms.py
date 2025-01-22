@@ -1,7 +1,15 @@
 from django import forms
 
+from .models import Feedback
 
-class FeedbackForm(forms.Form):
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = "__all__"
+
+
+class FeedbackFormOld(forms.Form):
     name = forms.CharField(  # текстовое поле
         label="Имя",  # подпись
         max_length=7,  # максимальная длина
