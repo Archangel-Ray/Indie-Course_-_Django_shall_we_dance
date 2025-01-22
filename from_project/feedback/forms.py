@@ -8,6 +8,13 @@ class FeedbackForm(forms.ModelForm):
         model = Feedback
         fields = "__all__"
 
+        labels = {
+            "name": "Имя",
+            "surname": "Фамилия",
+            "feedback": "Отзыв",
+            "rating": "Рейтинг",
+        }
+
 
 class FeedbackFormOld(forms.Form):
     name = forms.CharField(  # текстовое поле
