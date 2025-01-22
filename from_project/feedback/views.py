@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 
 from .forms import FeedbackForm
+from .models import Feedback
 
 
 def index(request):
@@ -11,6 +12,14 @@ def index(request):
         # проверка данных формы
         if window.is_valid():
             print(window.cleaned_data)
+            feed = Feedback(  # экземпляр модели с данными из формы
+                name=window.cleaned_data['name'],
+                surname=window.cleaned_data['surname'],
+                feedback=window.cleaned_data['feedback'],
+                rating=window.cleaned_data['rating'],
+            )
+            feed.save()  # сохранение в базу
+
             # перенаправление на сообщение о подтверждении
             return HttpResponseRedirect('/done')
     else:
