@@ -29,8 +29,10 @@ def index(request):
 
 
 def update_feedback(request, id_feedback):
+    # получение записи из базы данных
     feed = Feedback.objects.get(id=id_feedback)
-    window = FeedbackForm(instance=feed)
+    window = FeedbackForm(instance=feed)  # форма с привязкой к записи
+    # отправляет в шаблон форму с привязкой к записи
     return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
 
