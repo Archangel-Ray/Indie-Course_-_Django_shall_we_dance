@@ -36,7 +36,7 @@ def update_feedback(request, id_feedback):
         window = FeedbackForm(request.POST, instance=feed)
         if window.is_valid():  # проверка на соответствие настройкам
             window.save()  # сохранение в базу
-        return HttpResponseRedirect('/done')  # перенаправление на сообщение о подтверждении
+        return HttpResponseRedirect(f'/{id_feedback}')  # перенаправление на изменённую запись
     else:
         window = FeedbackForm(instance=feed)  # если был запрос без изменений
     # отправляет в шаблон форму с привязкой к записи
