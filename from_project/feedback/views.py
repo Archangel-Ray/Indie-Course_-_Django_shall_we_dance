@@ -28,6 +28,12 @@ def index(request):
     return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
 
+def update_feedback(request, id_feedback):
+    feed = Feedback.objects.get(id=id_feedback)
+    window = FeedbackForm(instance=feed)
+    return render(request, 'feedback/feedback.html', context={'about_the_window': window})
+
+
 def done(request):
     # шаблон с сообщением о подтверждении
     return render(request, 'feedback/done.html')
