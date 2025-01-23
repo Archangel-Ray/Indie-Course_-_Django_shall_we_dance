@@ -31,7 +31,14 @@ def index(request):
 def update_feedback(request, id_feedback):
     # получение записи из базы данных
     feed = Feedback.objects.get(id=id_feedback)
-    window = FeedbackForm(instance=feed)  # форма с привязкой к записи
+    if request.method == 'POST':  # проверка, на то что это -- редактирование
+        # форма с привязкой к записи из базы и новое наполнение
+        window = FeedbackForm(request.POST, instance=feed)
+        if window.is_valid():  # проверка на соответствие настройкам
+            window.save()  # сохранение в базу
+        return HttpResponseRedirect('/done')  # перенаправление на сообщение о подтверждении
+    else:
+        window = FeedbackForm(instance=feed)  # если был запрос без изменений
     # отправляет в шаблон форму с привязкой к записи
     return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
