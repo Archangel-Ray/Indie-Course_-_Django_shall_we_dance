@@ -7,7 +7,11 @@ from .models import Feedback
 
 
 class FeedBackView(View):
-    pass
+    def get(self, request):
+        pass
+
+    def post(self, request):
+        pass
 
 
 def index(request):
