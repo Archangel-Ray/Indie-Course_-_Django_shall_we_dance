@@ -8,10 +8,15 @@ from .models import Feedback
 
 class FeedBackView(View):
     def get(self, request):
-        pass
+        window = FeedbackForm()
+        return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
     def post(self, request):
-        pass
+        window = FeedbackForm(request.POST)
+        if window.is_valid():
+            window.save()
+            return HttpResponseRedirect('/done')
+        return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
 
 def index(request):
