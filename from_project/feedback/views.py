@@ -19,6 +19,21 @@ class FeedBackView(View):
         return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
 
+class UpdateFeedbackView(View):
+    def get(self, request, id_feedback):
+        feed = Feedback.objects.get(id=id_feedback)
+        window = FeedbackForm(instance=feed)
+        return render(request, 'feedback/feedback.html', context={'about_the_window': window})
+
+    def post(self, request, id_feedback):
+        feed = Feedback.objects.get(id=id_feedback)
+        window = FeedbackForm(request.POST, instance=feed)
+        if window.is_valid():
+            window.save()
+            return HttpResponseRedirect(f'/{id_feedback}')
+        return render(request, 'feedback/feedback.html', context={'about_the_window': window})
+
+
 def index(request):
     if request.method == 'POST':
         # создание формы и наполнение её полученными данными
