@@ -1,14 +1,8 @@
-<!DOCTYPE html>
+{%extends 'base.html'%}
 
-{% load static %}
+{% block title %} Страница отзывов {% endblock %}
 
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static 'feedback/forms.css' %}">
-</head>
-<body>
+{% block content %}
     <h2>Оставьте отзыв</h2>  <!-- создание шаблона -->
     <form method="post">  <!--отправка в корень сайта через post запрос-->
         {% csrf_token %}  <!--проверка актуальности текущей сессии-->
@@ -23,5 +17,4 @@
 
         <button type="submit">отправить</button>
     </form>
-</body>
-</html>
+{% endblock %}
