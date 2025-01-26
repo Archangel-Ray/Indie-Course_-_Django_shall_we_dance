@@ -34,6 +34,11 @@ class UpdateFeedbackView(View):
         return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
 
+class DoneView(View):
+    def get(self, request):
+        return render(request, 'feedback/done.html')
+
+
 def index(request):
     if request.method == 'POST':
         # создание формы и наполнение её полученными данными
