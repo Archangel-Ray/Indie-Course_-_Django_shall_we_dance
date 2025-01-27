@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views import View
+from django.views.generic.base import TemplateView
 
 from .forms import FeedbackForm
 from .models import Feedback
@@ -34,9 +35,8 @@ class UpdateFeedbackView(View):
         return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
 
-class DoneView(View):
-    def get(self, request):
-        return render(request, 'feedback/done.html')
+class DoneView(TemplateView):
+    template_name = 'feedback/done.html'
 
 
 def index(request):
