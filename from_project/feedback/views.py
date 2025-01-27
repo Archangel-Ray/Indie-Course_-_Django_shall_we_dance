@@ -41,6 +41,15 @@ class DoneView(TemplateView):
     """
     template_name = 'feedback/done.html'
 
+    def get_context_data(self, **kwargs):
+        """
+        добавление контекста в шаблон
+        """
+        context = super().get_context_data(**kwargs)
+        context["text"] = "Дополнительный текст"
+        context["date"] = "23.04.2022"
+        return context
+
 
 """
 дальше идут старые функции. оставил на память.
