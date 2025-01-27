@@ -36,6 +36,9 @@ class UpdateFeedbackView(View):
 
 
 class DoneView(TemplateView):
+    """
+    класс простого отображения шаблонов
+    """
     template_name = 'feedback/done.html'
 
 
