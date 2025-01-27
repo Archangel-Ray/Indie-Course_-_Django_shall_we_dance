@@ -20,6 +20,22 @@ class FeedBackView(View):
         return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
 
+class ListFeedBack(TemplateView):
+    """
+    отображение списка всех отзывов
+    """
+    template_name = "feedback/list_feedback.html"
+
+    def get_context_data(self, **kwargs):
+        """
+        передача записей из базы в контекст
+        """
+        context = super().get_context_data(**kwargs)
+        all_notes = Feedback.objects.all()
+        context["all"] = all_notes
+        return context
+
+
 class UpdateFeedbackView(View):
     def get(self, request, id_feedback):
         feed = Feedback.objects.get(id=id_feedback)

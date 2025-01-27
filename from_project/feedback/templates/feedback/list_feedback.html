@@ -1,0 +1,12 @@
+{%extends 'base.html'%}
+
+{% block title %} Список всех отзывов {% endblock %}
+
+{% block content %}
+    {%for one in all%}
+        <h2>№{{one.id}}</h2>
+        <h3>{{one.name}} {{one.surname}}</h3>
+        <p>{{one.feedback}}</p>
+        <h5>рейтинг: {{one.rating}}</h5>
+    {%endfor%}
+{% endblock %}

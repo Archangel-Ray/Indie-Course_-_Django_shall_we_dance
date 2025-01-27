@@ -3,6 +3,12 @@ body {
     font-family: Sans-Serif;
 }
 
+p{
+    width:50%;
+    margin: 20px auto 5px;
+    text-align: center;
+}
+
 h2{
     width:50%;
     margin: 20px auto 5px;
@@ -10,6 +16,17 @@ h2{
     padding: 5px;
     border-radius: 5px;
     box-shadow: 0 2px 8px #3ca3c1;
+}
+
+h3{
+    width:50%;
+    margin: 20px auto 5px;
+}
+
+h5{
+    width:50%;
+    margin: 20px auto 5px;
+    text-align: right;
 }
 
 form {
