@@ -42,6 +42,11 @@ class DoneView(TemplateView):
     template_name = 'feedback/done.html'
 
 
+"""
+дальше идут старые функции. оставил на память.
+"""
+
+
 def index(request):
     if request.method == 'POST':
         # создание формы и наполнение её полученными данными
