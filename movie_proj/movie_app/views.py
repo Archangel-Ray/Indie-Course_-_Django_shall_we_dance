@@ -43,10 +43,10 @@ def director_display(request, id_director):
     })
 
 
-def actors_display(request):
-    return render(request, 'movie_app/actors.html', {
-        'actors': Actor.objects.all()
-    })
+class ActorsDisplay(ListView):
+    template_name = "movie_app/actors.html"
+    model = Actor
+    context_object_name = "actors"
 
 
 def actor_display(request, id_actor):
