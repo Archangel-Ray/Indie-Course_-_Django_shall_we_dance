@@ -4,7 +4,7 @@ from django.views import View
 from django.views.generic.base import TemplateView
 
 from .forms import FeedbackForm
-from .models import Feedback
+from .models import FeedBack
 
 
 class FeedBackView(View):
@@ -31,7 +31,7 @@ class ListFeedBack(TemplateView):
         передача записей из базы в контекст
         """
         context = super().get_context_data(**kwargs)
-        all_notes = Feedback.objects.all()
+        all_notes = FeedBack.objects.all()
         context["all"] = all_notes
         return context
 
@@ -47,19 +47,19 @@ class DetailFeedBack(TemplateView):
         передача конкретной записи из базы в контекст
         """
         context = super().get_context_data(**kwargs)
-        note = Feedback.objects.get(id=kwargs["id_feedback"])
+        note = FeedBack.objects.get(id=kwargs["id_feedback"])
         context["specific_entry"] = note
         return context
 
 
 class UpdateFeedbackView(View):
     def get(self, request, id_feedback):
-        feed = Feedback.objects.get(id=id_feedback)
+        feed = FeedBack.objects.get(id=id_feedback)
         window = FeedbackForm(instance=feed)
         return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
     def post(self, request, id_feedback):
-        feed = Feedback.objects.get(id=id_feedback)
+        feed = FeedBack.objects.get(id=id_feedback)
         window = FeedbackForm(request.POST, instance=feed)
         if window.is_valid():
             window.save()
@@ -113,7 +113,7 @@ def index(request):
 
 def update_feedback(request, id_feedback):
     # получение записи из базы данных
-    feed = Feedback.objects.get(id=id_feedback)
+    feed = FeedBack.objects.get(id=id_feedback)
     if request.method == 'POST':  # проверка, на то что это -- редактирование
         # форма с привязкой к записи из базы и новое наполнение
         window = FeedbackForm(request.POST, instance=feed)

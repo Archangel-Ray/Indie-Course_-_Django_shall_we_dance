@@ -1,11 +1,11 @@
 from django import forms
 
-from .models import Feedback
+from .models import FeedBack
 
 
 class FeedbackForm(forms.ModelForm):
     class Meta:
-        model = Feedback
+        model = FeedBack
         fields = "__all__"
 
         labels = {
