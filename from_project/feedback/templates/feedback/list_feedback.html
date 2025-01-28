@@ -3,10 +3,14 @@
 {% block title %} Список всех отзывов {% endblock %}
 
 {% block content %}
+    <a href="{% url 'добавление отзыва' %}"><p>добавить отзыв</p></a>
     {%for one in all%}
-        <h2>№{{one.id}}</h2>
+        <a href="{% url 'отзыв' one.id %}"><h2>№{{one.id}}</h2></a>
         <h3>{{one.name}} {{one.surname}}</h3>
         <p>{{one.feedback}}</p>
-        <h5>рейтинг: {{one.rating}}</h5>
+        <h5>
+            <a href="{% url 'форма отзыва' one.id %}">редактировать</a> |
+            рейтинг: {{one.rating}}
+        </h5>
     {%endfor%}
 {% endblock %}
