@@ -29,6 +29,11 @@ class ListFeedBack(ListView):
     model = FeedBack
     context_object_name = "all"
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        filter_qs = queryset.order_by("-rating")
+        return filter_qs
+
 
 class DetailFeedBack(TemplateView):
     """
