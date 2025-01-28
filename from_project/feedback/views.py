@@ -51,6 +51,7 @@ class DetailFeedBack(TemplateView):
         context["specific_entry"] = note
         return context
 
+
 class UpdateFeedbackView(View):
     def get(self, request, id_feedback):
         feed = Feedback.objects.get(id=id_feedback)
