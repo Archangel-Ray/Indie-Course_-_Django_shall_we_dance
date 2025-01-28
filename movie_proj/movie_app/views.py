@@ -1,6 +1,7 @@
 """.../movie_proj/movie_app/views.py"""
 from django.db.models import F, Sum, Max, Min, Count, Avg, Value
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
 
 from .models import Movie, Director, Actor
 
@@ -30,10 +31,10 @@ def displaying_movie(request, slug_movie: str):
     })
 
 
-def directors_display(request):
-    return render(request, 'movie_app/directors.html', {
-        'directors': Director.objects.all()
-    })
+class DirectorsDisplay(ListView):
+    template_name = "movie_app/directors.html"
+    model = Director
+    context_object_name = "directors"
 
 
 def director_display(request, id_director):
