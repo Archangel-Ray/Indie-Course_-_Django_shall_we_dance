@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.base import TemplateView
 
 from .forms import FeedbackForm
@@ -35,20 +35,12 @@ class ListFeedBack(ListView):
         return filter_qs
 
 
-class DetailFeedBack(TemplateView):
+class DetailFeedBack(DetailView):
     """
     вывод отдельного отзыва
     """
     template_name = "feedback/detail_feedback.html"
-
-    def get_context_data(self, **kwargs):
-        """
-        передача конкретной записи из базы в контекст
-        """
-        context = super().get_context_data(**kwargs)
-        note = FeedBack.objects.get(id=kwargs["id_feedback"])
-        context["specific_entry"] = note
-        return context
+    model = FeedBack
 
 
 class UpdateFeedbackView(View):

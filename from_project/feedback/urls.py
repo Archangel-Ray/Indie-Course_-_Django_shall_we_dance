@@ -13,5 +13,5 @@ urlpatterns = [
     # отображение всех записей
     path('list', ListFeedBack.as_view(), name="список"),
     # отображение конкретной записи
-    path('detail/<int:id_feedback>', DetailFeedBack.as_view(), name="отзыв"),
+    path('detail/<int:pk>', DetailFeedBack.as_view(), name="отзыв"),
 ]
