@@ -37,10 +37,10 @@ class DirectorsDisplay(ListView):
     context_object_name = "directors"
 
 
-def director_display(request, id_director):
-    return render(request, 'movie_app/director.html', {
-        'director': Director.objects.get(id=id_director)
-    })
+class DirectorDisplay(DetailView):
+    template_name = "movie_app/director.html"
+    model = Director
+    context_object_name = "director"
 
 
 class ActorsDisplay(ListView):
