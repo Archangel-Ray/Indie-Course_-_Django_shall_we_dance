@@ -8,5 +8,5 @@ urlpatterns = [
     path('directors/', views.DirectorsDisplay.as_view(), name="все режиссёры"),
     path('directors/<id_director>', views.director_display, name="режиссёр"),
     path('actors/', views.ActorsDisplay.as_view(), name="актёры"),
-    path('actors/<id_actor>', views.actor_display, name="актёр"),
+    path('actors/<int:pk>', views.ActorDisplay.as_view(), name="актёр"),
 ]
