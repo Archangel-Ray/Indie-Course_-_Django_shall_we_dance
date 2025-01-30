@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.show_all_movies),
-    path('movie/<slug:slug_movie>', views.displaying_movie, name="отображение фильма"),
+    path('movie/<slug:slug>', views.DisplayingMovie.as_view(), name="отображение фильма"),
     path('directors/', views.DirectorsDisplay.as_view(), name="все режиссёры"),
     path('directors/<int:pk>', views.DirectorDisplay.as_view(), name="режиссёр"),
     path('actors/', views.ActorsDisplay.as_view(), name="актёры"),

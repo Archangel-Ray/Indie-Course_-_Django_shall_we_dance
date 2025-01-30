@@ -24,7 +24,14 @@ def show_all_movies(request):
     })
 
 
+class DisplayingMovie(DetailView):
+    template_name = "movie_app/movie.html"
+    model = Movie
+    context_object_name = "movie"
+
+
 def displaying_movie(request, slug_movie: str):
+    """оставил на память. тут использовалось сообщение 404. а я не знаю как его использовать в классе"""
     movie = get_object_or_404(Movie, slug=slug_movie)
     return render(request, 'movie_app/movie.html', {
         'movie': movie
