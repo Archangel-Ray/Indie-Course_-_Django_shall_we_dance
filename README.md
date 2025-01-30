@@ -151,3 +151,4 @@ css-файл в шаблоне основной страницы.
   - представления основанные на Class Based View
     - TemplateView
     - ListView
+    - DetailView
