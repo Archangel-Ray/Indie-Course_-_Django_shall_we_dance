@@ -8,7 +8,8 @@
     <form method="post">  <!--отправка в корень сайта через post запрос-->
         {% csrf_token %}  <!--проверка актуальности текущей сессии-->
 
-        {% for field in about_the_window %}
+        <!--"form" - обязательное название контекста из представления основанного на классе FormView -->
+        {% for field in form %}
             <div class="form-style {% if field.errors %} errors {% endif %}">
                 {{ field.label_tag }} <!--отображение подписи-->
                 {{ field.errors }} <!--отображение строки если ошибка-->

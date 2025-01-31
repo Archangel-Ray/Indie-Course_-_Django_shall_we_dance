@@ -3,12 +3,17 @@ from django.http import HttpResponseRedirect
 from django.views import View
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import TemplateView
+from django.views.generic.edit import FormView  # находиться в edit, но ПайЧарм загружает из generic
 
 from .forms import FeedbackForm
 from .models import FeedBack
 
 
-class FeedBackView(View):
+class FeedBackViewOld(View):
+    """
+    обработка get и post запросов из формы на основе базового класса.
+    оставил на память.
+    """
     def get(self, request):
         window = FeedbackForm()
         return render(request, 'feedback/feedback.html', context={'about_the_window': window})
@@ -19,6 +24,20 @@ class FeedBackView(View):
             window.save()
             return HttpResponseRedirect('/done')
         return render(request, 'feedback/feedback.html', context={'about_the_window': window})
+
+
+class FeedBackView(FormView):
+    """
+    класс обработки get и post запросов из формы.
+    важно: переменная контекста называется "form".
+    """
+    form_class = FeedbackForm  # указать форму (не вызвать)
+    template_name = "feedback/feedback.html"  # шаблон
+    success_url = "/done"  # адрес перенаправления после обработки формы
+
+    def form_valid(self, form):  # обработка post запроса и проверка данных формы
+        form.save()  # сохранение данных в базу
+        return super(FeedBackView, self).form_valid(form)
 
 
 class ListFeedBack(ListView):
@@ -47,7 +66,7 @@ class UpdateFeedbackView(View):
     def get(self, request, id_feedback):
         feed = FeedBack.objects.get(id=id_feedback)
         window = FeedbackForm(instance=feed)
-        return render(request, 'feedback/feedback.html', context={'about_the_window': window})
+        return render(request, 'feedback/feedback.html', context={'form': window})
 
     def post(self, request, id_feedback):
         feed = FeedBack.objects.get(id=id_feedback)
@@ -55,7 +74,7 @@ class UpdateFeedbackView(View):
         if window.is_valid():
             window.save()
             return HttpResponseRedirect(f'/{id_feedback}')
-        return render(request, 'feedback/feedback.html', context={'about_the_window': window})
+        return render(request, 'feedback/feedback.html', context={'form': window})
 
 
 class DoneView(TemplateView):
