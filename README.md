@@ -154,3 +154,4 @@ css-файл в шаблоне основной страницы.
     - TemplateView
     - ListView
     - DetailView
+    - FormView
