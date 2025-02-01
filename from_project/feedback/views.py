@@ -3,10 +3,21 @@ from django.http import HttpResponseRedirect
 from django.views import View
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import FormView  # находиться в edit, но ПайЧарм загружает из generic
+from django.views.generic.edit import FormView, CreateView  # находиться в edit, но ПайЧарм загружает из generic
 
 from .forms import FeedbackForm
 from .models import FeedBack
+
+
+class FeedBackView(CreateView):
+    """
+    класс представления для создания новой записи.
+    автоматически сохраняет запись в базе данных.
+    """
+    model = FeedBack  # указать модель
+    form_class = FeedbackForm  # указать форму (не вызывать)
+    template_name = "feedback/feedback.html"  # шаблон
+    success_url = "/done"  # адрес перенаправления после успешной обработки формы
 
 
 class FeedBackViewOld(View):
@@ -14,6 +25,7 @@ class FeedBackViewOld(View):
     обработка get и post запросов из формы на основе базового класса.
     оставил на память.
     """
+
     def get(self, request):
         window = FeedbackForm()
         return render(request, 'feedback/feedback.html', context={'about_the_window': window})
@@ -26,7 +38,7 @@ class FeedBackViewOld(View):
         return render(request, 'feedback/feedback.html', context={'about_the_window': window})
 
 
-class FeedBackView(FormView):
+class FeedBackFormView(FormView):
     """
     класс обработки get и post запросов из формы.
     важно: переменная контекста называется "form".
@@ -37,7 +49,7 @@ class FeedBackView(FormView):
 
     def form_valid(self, form):  # обработка post запроса и проверка данных формы
         form.save()  # сохранение данных в базу
-        return super(FeedBackView, self).form_valid(form)
+        return super(FeedBackFormView, self).form_valid(form)
 
 
 class ListFeedBack(ListView):
