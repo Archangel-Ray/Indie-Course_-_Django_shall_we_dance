@@ -9,7 +9,7 @@ urlpatterns = [
     # запуск представления с формой
     path('', FeedBackView.as_view(), name="добавление отзыва"),
     # запуск представления с указанной записью из базы
-    path('<int:id_feedback>', UpdateFeedbackView.as_view(), name="форма отзыва"),
+    path('<int:pk>', UpdateFeedbackView.as_view(), name="форма отзыва"),
     # отображение всех записей
     path('list', ListFeedBack.as_view(), name="список"),
     # отображение конкретной записи

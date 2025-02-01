@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView, DetailView
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import FormView, CreateView  # находиться в edit, но ПайЧарм загружает из generic
+from django.views.generic.edit import (
+    FormView,  # находиться в edit, но ПайЧарм загружает из generic
+    CreateView,
+    UpdateView,
+)
 
 from .forms import FeedbackForm
 from .models import FeedBack
@@ -74,7 +79,7 @@ class DetailFeedBack(DetailView):
     model = FeedBack
 
 
-class UpdateFeedbackView(View):
+class UpdateFeedbackViewOld(View):  # оставил на память
     def get(self, request, id_feedback):
         feed = FeedBack.objects.get(id=id_feedback)
         window = FeedbackForm(instance=feed)
@@ -87,6 +92,21 @@ class UpdateFeedbackView(View):
             window.save()
             return HttpResponseRedirect(f'/{id_feedback}')
         return render(request, 'feedback/feedback.html', context={'form': window})
+
+
+class UpdateFeedbackView(UpdateView):
+    model = FeedBack  # указать модель (не создавать экземпляр)
+    form_class = FeedbackForm  # указать форму (не вызывать)
+    template_name = "feedback/feedback.html"  # шаблон
+    # success_url = "/done"  # адрес перенаправления после успешной обработки формы
+
+    def get_success_url(self):
+        """
+        переопределил адрес,
+        чтоб оставаться в редактировании записи.
+        как было в предыдущем представлении.
+        """
+        return reverse('форма отзыва', kwargs={'pk': self.kwargs.get('pk')})
 
 
 class DoneView(TemplateView):
