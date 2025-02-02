@@ -4,7 +4,8 @@
 
 {% block content %}
     <h2>Загрузите файл</h2>
-    <form>
+    <form method="post">
+        {% csrf_token %}
         <input type="file">
         <button type="submit">загрузить</button>
     </form>
