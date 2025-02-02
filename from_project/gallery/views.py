@@ -13,4 +13,5 @@ class GalleryView(View):
         return render(request, 'gallery/load_file.html')
 
     def post(self, request):
-        pass
+        storage_file(request.FILES['image'])
+        return render(request, 'gallery/load_file.html')
