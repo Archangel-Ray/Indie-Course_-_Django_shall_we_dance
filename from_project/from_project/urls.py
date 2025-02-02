@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('feedback.urls')),  # подключение роутов приложения для работы с формами
+    path('', include('gallery.urls')),  # подключение роутов приложения для работы с файлами
 ]
