@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'feedback',  # приложение для работы с формами
+    'gallery',  # приложение для работы с файлами
 ]
 
 MIDDLEWARE = [
