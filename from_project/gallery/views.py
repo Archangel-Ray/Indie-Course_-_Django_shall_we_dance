@@ -3,7 +3,7 @@ from django.views import View
 
 
 def storage_file(file):  # функция записывающая файл в директорию на сервере
-    with open('gallery_tmp/new_image.jpg', 'wb+') as new_file:
+    with open(f'gallery_tmp/{file.name}', 'wb+') as new_file:
         for chunk in file.chunks():
             new_file.write(chunk)
 
