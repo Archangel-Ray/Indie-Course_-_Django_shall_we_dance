@@ -150,8 +150,10 @@ css-файл в шаблоне основной страницы.
   - форма на основе модели базы данных
   - редактирование базы через форму
   - представления наследованные от класса Views
-  - представления основанные на Class Based View
-    - TemplateView
-    - ListView
-    - DetailView
-    - FormView
+  - представления основанные на Class Based View:
+    - TemplateView;
+    - ListView;
+    - DetailView;
+    - FormView;
+    - CreateView;
+    - UpdateView.
