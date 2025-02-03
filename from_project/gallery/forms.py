@@ -1,5 +1,12 @@
 from django import forms
 
+from .models import Gallery
 
-class GalleryUploadForm(forms.Form):
-    image = forms.FileField(label="Что загружаем")  # поле загрузки - открывает окно проводника для выбора файла
+
+class GalleryUploadForm(forms.ModelForm):
+    class Meta:
+        model = Gallery
+        fields = ["image"]
+        labels = {
+            "image": "Что загружаем"
+        }
