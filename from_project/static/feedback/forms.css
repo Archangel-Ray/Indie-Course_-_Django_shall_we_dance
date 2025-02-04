@@ -93,3 +93,7 @@ button:active {
 .errors label{
  color: crimson;
 }
+
+ol{
+    text-align: center;
+}
