@@ -3,6 +3,7 @@
 {% block title %} Отображение файлов галереи {% endblock %}
 
 {% block content %}
+    <a href="{% url 'загрузка файла автоматически' %}"><p>загрузить ещё один файл</p></a>
     <h2>Список файлов</h2>
     <ol>
         {% for record in records %}

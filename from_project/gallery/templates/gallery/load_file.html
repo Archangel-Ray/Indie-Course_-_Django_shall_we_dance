@@ -3,6 +3,7 @@
 {% block title %} Добавление файла в галерею {% endblock %}
 
 {% block content %}
+    <a href="{% url 'вывод всех файлов' %}"><p>посмотреть все файлы</p></a>
     <h2>Загрузите файл</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
