@@ -6,4 +6,5 @@ urlpatterns = [
     # форма загрузки файла
     path('load_image', views.GalleryView.as_view()),
     path('create_load_image', views.CreateGalleryView.as_view()),
+    path('list_image', views.ListGallery.as_view()),
 ]
