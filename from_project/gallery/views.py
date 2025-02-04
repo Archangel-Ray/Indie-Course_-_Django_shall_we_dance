@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView
 
 from .forms import GalleryUploadForm
@@ -37,3 +38,9 @@ class CreateGalleryView(CreateView):
     form_class = GalleryUploadForm
     template_name = 'gallery/load_file.html'
     success_url = "load_image"
+
+
+class ListGallery(ListView):
+    model = Gallery
+    template_name = "gallery/list_file.html"
+    context_object_name = "records"
